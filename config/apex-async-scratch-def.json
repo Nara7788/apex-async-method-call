@@ -1,0 +1,19 @@
+{
+  "orgName": "apex-async",
+  "country": "UA",
+  "username": "yevhen.kharchuk@apex.async",
+  "adminEmail": "kharchuk.yevhen@gmail.com",
+  "edition": "Developer",
+  "language": "en",
+  "hasSampleData": true,
+  "features": [
+    "StreamingAPI"
+  ],
+  "settings": {
+    "settings": {
+      "lightningExperienceSettings": {
+        "enableS1DesktopEnabled": false
+      }
+    }
+  }
+}
