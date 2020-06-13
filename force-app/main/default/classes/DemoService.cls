@@ -2,7 +2,6 @@ public with sharing class DemoService implements Callable {
 
     public void sendNotifications(Map<Integer, String> userMessages) {
         System.debug('Notification is sent');
-        insert new Account(Name = userMessages.values()[0] + System.now().getTime());
     }
 
     public void sendNotificationsAsync(Map<Integer, String> userMessages) {
@@ -10,17 +9,15 @@ public with sharing class DemoService implements Callable {
                 DemoService.class,
                 'sendNotifications',
                 new Map<String, Object>{
-                        'userMessages' => 'fake'
+                        'userMessages' => userMessages
                 });
     }
 
     public void calculatePiNumber(Integer piSigns) {
-        System.debug('Very long calculations');
-        System.debug('piSigns' + piSigns);
+        System.debug('Long calculations');
     }
 
     public void calculatePiNumberAsync(Integer piSigns) {
-        System.debug('Very long calculations');
         Async.execute(
                 DemoService.class,
                 'calculatePiNumber',

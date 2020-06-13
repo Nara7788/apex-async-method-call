@@ -3,7 +3,6 @@
  * Callable interface, executes the call method, where the payload is passed.
  */
 trigger Method_Call_Event_Trigger on Method_Call__e (after insert) {
-    System.debug('in trigger');
     for (Method_Call__e payload : Trigger.new) {
         Type classType = Type.forName(payload.Class__c);
         Callable instance = (Callable) classType.newInstance();
