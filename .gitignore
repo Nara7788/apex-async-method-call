@@ -21,7 +21,6 @@ yarn-error.log*
 
 # Dependency directories
 node_modules/
-
 # Eslint cache
 .eslintcache
 
@@ -33,3 +32,14 @@ Thumbs.db
 ehthumbs.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
+
+#Illuminated cloud project data
+.prettierrc
+.eslintignore
+.prettierignore
+package.json
+package-lock.json
+.vscode
+IlluminatedCloud
+node_modules
+scripts
