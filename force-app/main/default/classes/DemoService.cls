@@ -4,17 +4,18 @@ public with sharing class DemoService implements Callable {
         System.debug('Notification is sent');
     }
 
+    public void calculatePiNumber(Integer piSigns) {
+        System.debug('Long calculations');
+    }
+
     public void sendNotificationsAsync(Map<Integer, String> userMessages) {
         Async.execute(
                 DemoService.class,
                 'sendNotifications',
                 new Map<String, Object>{
                         'userMessages' => userMessages
-                });
-    }
-
-    public void calculatePiNumber(Integer piSigns) {
-        System.debug('Long calculations');
+                }
+        );
     }
 
     public void calculatePiNumberAsync(Integer piSigns) {
@@ -23,7 +24,8 @@ public with sharing class DemoService implements Callable {
                 'calculatePiNumber',
                 new Map<String, Object>{
                         'piSigns' => piSigns
-                });
+                }
+        );
     }
 
 
@@ -31,15 +33,12 @@ public with sharing class DemoService implements Callable {
         switch on methodName {
             when 'sendNotifications' {
                 Object firstArg = args.get('userMessages');
-                Map<Integer, String> firsArgCasted = (Map<Integer, String>) Async.cast(
-                        firstArg,
-                        Map<Integer, String>.class
-                );
+                Map<Integer, String> firsArgCasted = (Map<Integer, String>) cast(firstArg, Map<Integer, String>.class);
                 sendNotifications(firsArgCasted);
             }
             when 'calculatePiNumber' {
                 Object firstArg = args.get('piSigns');
-                Integer firstArgCasted = (Integer) Async.cast(firstArg, Integer.class);
+                Integer firstArgCasted = (Integer) cast(firstArg, Integer.class);
                 calculatePiNumber(firstArgCasted);
             }
             when else {
@@ -48,6 +47,10 @@ public with sharing class DemoService implements Callable {
         }
 
         return null;
+    }
+
+    public static Object cast(Object o, Type t) {
+        return JSON.deserialize(JSON.serialize(o), t);
     }
 
     public class MalformedCallException extends Exception {

@@ -15,8 +15,4 @@ public with sharing class Async {
     public static void executeImmediate() {
 
     }
-
-    public static Object cast(Object o, Type t){
-        return JSON.deserialize(JSON.serialize(o), t);
-    }
 }
