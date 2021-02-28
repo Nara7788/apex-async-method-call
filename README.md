@@ -3,7 +3,7 @@
 The small library provides a way to run apex methods asynchronously without limitations of future, queueable, 
 batch or schedulable approaches.
 
-### UPDATE: 18-Feb-2021
+### UPDATE: 28-Feb-2021
 * Changed API names
 * Removed not immediate PE invocations
 * Implemented method for a bulk run of the async method (i.e., pass list with 500 ids and process each in the different context). To use, set Trigger bulk size to 1. It could be used in the Batch execute methods.
